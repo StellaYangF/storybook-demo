@@ -1,5 +1,3 @@
-import { css } from "styled-components";
-
 export const color = {
   // Palette
   primary: "#FF4785",
@@ -39,6 +37,8 @@ export const background = {
   negative: "#FEDED2",
   warning: "#FFF5CF",
 };
+
+// layout
 export const typography = {
   type: {
     primary: '"Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
@@ -65,6 +65,7 @@ export const typography = {
   },
 };
 
+// radius & space
 export const spacing = {
   padding: {
     small: 10,
