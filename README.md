@@ -46,6 +46,41 @@ CDD(Component-Driven Development) 是组件驱动开发。
 * **较短的学习曲线**：当开发人员必须投入新项目时，学习和理解已定义组件的结构比投入整个应用程序要容易得多。
 * **更好的系统建模**：当系统由模块化组件组成时，更易于掌握，理解和操作。
 
+
+## package 相关配置
+
+### 发包依赖
+
+* 对于 dependencies，只要有用户下载你这个包，dependencies里面的包都会进行安装。
+
+* 对于 devDependencies，用户下载你这个包不会安装这些包。
+
+* 对于 peerDependencies，用户下载你这个包后如果用户没安装会进行报警，如果用户已有这个包但版本与你的不匹配会报警。用户下载你这个包不会自动安装 peerDependencies。
+
+### sideEffects 拆包引入
+
+tree-shaking 配合 sideEffects: false 来标记当前模块没有副作用，可以放心将没有引入的模块进行剪枝
+
+* 将未被使用的 exported member 标记为 unused
+* 将其 re-export 的模块中不再 export
+
+### ts 相关配置
+
+* esModuleInterop: 提供 __importStar 和 __importDefault 分别处理 import * as 和 import default，主动设置 default 属性
+* allowSyntheticDefaultImports: 去除类型检查（允许从没有设置默认导出的模块中默认导出）
+
+> 开启esModuleInterop后会默认开启allowSyntheticDefaultImports选项
+
+## GitHub Actions 持续集成
+
+storybook是可以生成静态页面的，需要改一下命令：
+
+```json
+{
+    "build-storybook": "build-storybook --no-dll --quiet"
+}
+```
+
 ## Bugs
 
 * **Cannot find module 'react' or its corresponding type declarations.** 报错主要由于依赖包没有完全安装，手动删除 node_modules 文件夹，执行 `npm install` 重新安装即可。

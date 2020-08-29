@@ -1,29 +1,18 @@
 {
-  "name": "stoybook-demo",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@stella2/storybook-demo",
+  "version": "0.1.7",
+  "private": false,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "polished": "^3.6.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
-    "typescript": "~3.7.2"
+    "polished": "^3.6.5"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "tsc -p tsconfig.build.json",
     "test": "react-scripts test",
     "coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook --no-dll --quiet"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -56,7 +45,20 @@
     "@types/styled-components": "^5.1.2",
     "babel-loader": "^8.1.0",
     "react-is": "^16.13.1",
-    "styled-components": "^5.1.1"
+    "react-scripts": "3.4.3",
+    "typescript": "~3.7.2",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0"
+  },
+  "peerDependencies": {
+    "styled-components": "^5.1.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -64,5 +66,15 @@
       "src/**/*.tsx",
       "!src/**/*.snap"
     ]
-  }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://github.com/StellaYangF/storybook-demo@stella2"
+  },
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false
 }

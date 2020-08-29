@@ -440,4 +440,4 @@ Button.defaultProps = {
   ButtonWrapper: undefined,
 }
 
-export default Button;
+export {Button};
